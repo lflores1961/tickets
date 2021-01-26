@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Order number:</strong>
+  <%= @ticket.order_number %>
+</p>
+
+<p>
+  <strong>Order date:</strong>
+  <%= @ticket.order_date %>
+</p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @ticket.client_id %>
+</p>
+
+<p>
+  <strong>Equipment descrip:</strong>
+  <%= @ticket.equipment_descrip %>
+</p>
+
+<p>
+  <strong>Equipment password:</strong>
+  <%= @ticket.equipment_password %>
+</p>
+
+<p>
+  <strong>Equipment state:</strong>
+  <%= @ticket.equipment_state %>
+</p>
+
+<p>
+  <strong>Observations:</strong>
+  <%= @ticket.observations %>
+</p>
+
+<p>
+  <strong>Diagnostic:</strong>
+  <%= @ticket.diagnostic %>
+</p>
+
+<p>
+  <strong>Cost:</strong>
+  <%= @ticket.cost %>
+</p>
+
+<%= link_to 'Edit', edit_ticket_path(@ticket) %> |
+<%= link_to 'Back', tickets_path %>
