@@ -1,0 +1,22 @@
+<%= form_with(model: folio, local: true) do |form| %>
+  <% if folio.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(folio.errors.count, "error") %> prohibited this folio from being saved:</h2>
+
+      <ul>
+        <% folio.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :numero_folio %>
+    <%= form.number_field :numero_folio %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

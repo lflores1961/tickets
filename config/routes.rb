@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :folios
   root 'dashboard#main'
   resources :tickets, except: :new
   get 'clients/:client_id/ticket' => 'tickets#new', as: :service
