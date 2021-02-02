@@ -27,7 +27,7 @@ class TicketsController < ApplicationController
 
     if @ticket.save
       flash[:success] = "Se ha creado exitosamente el ticket de #{ @client.name }"  
-      redirect_to root_path
+      redirect_to client_path(@client)
     else
       flash[:danger] = @ticket.errors[:base]
       redirect_to service_path(@client)
@@ -36,14 +36,14 @@ class TicketsController < ApplicationController
 
   # PATCH/PUT /tickets/1 or /tickets/1.json
   def update
-    respond_to do |format|
-      if @ticket.update(ticket_params)
-        format.html { redirect_to @ticket, notice: "Ticket was successfully updated." }
-        format.json { render :show, status: :ok, location: @ticket }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @ticket.errors, status: :unprocessable_entity }
-      end
+    @client = Client.find_by(id: params[:ticket][:client_id] || params[:ticket][:parameters][:client_id])
+    
+    if @ticket.update(ticket_params)
+      flash[:success] = "Se ha modificado exitosamente el ticket de #{ @client.name }"  
+      redirect_to client_path(@client)
+    else
+      flash[:danger] = @ticket.errors[:base]
+      redirect_to service_path(@client)
     end
   end
 
@@ -51,7 +51,7 @@ class TicketsController < ApplicationController
   def destroy
     @ticket.destroy
     respond_to do |format|
-      format.html { redirect_to tickets_url, notice: "Ticket was successfully destroyed." }
+      format.html { redirect_to client_path(@ticket.client), notice: "Se eliminó exitosamente el ticket" }
       format.json { head :no_content }
     end
   end
