@@ -8,6 +8,7 @@
       <th>Name</th>
       <th>Address</th>
       <th>Phone</th>
+      <th>Email</th>
       <th>Rfc</th>
       <th colspan="3"></th>
     </tr>
@@ -19,6 +20,7 @@
         <td><%= client.name %></td>
         <td><%= client.address %></td>
         <td><%= client.phone %></td>
+        <td><%= client.email %></td>
         <td><%= client.rfc %></td>
         <td><%= link_to 'Mostrar', client %></td>
         <td><%= link_to 'Edita', edit_client_path(client) %></td>

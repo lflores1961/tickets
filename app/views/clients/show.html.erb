@@ -16,9 +16,54 @@
 </p>
 
 <p>
+  <strong>Email:</strong>
+  <%= @client.email %>
+</p>
+
+<p>
   <strong>Rfc:</strong>
   <%= @client.rfc %>
 </p>
 
+<h1>Tickets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Order number</th>
+      <th>Order date</th>
+      <th>Client</th>
+      <th>Equipment descrip</th>
+      <th>Equipment password</th>
+      <th>Equipment state</th>
+      <th>Observations</th>
+      <th>Diagnostic</th>
+      <th>Status</th>
+      <th>Cost</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @client.tickets.each do |ticket| %>
+      <tr>
+        <td><%= ticket.order_number %></td>
+        <td><%= ticket.order_date %></td>
+        <td><%= ticket.client_id %></td>
+        <td><%= ticket.equipment_descrip %></td>
+        <td><%= ticket.clave_equipment %></td>
+        <td><%= ticket.equipment_state %></td>
+        <td><%= ticket.observations %></td>
+        <td><%= ticket.diagnostic %></td>
+        <td><%= ticket.status %></td>
+        <td><%= ticket.cost %></td>
+        <td><%= link_to 'Show', ticket %></td>
+        <td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
+        <td><%= link_to 'Destroy', ticket, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <%= link_to 'Edit', edit_client_path(@client) %> |
-<%= link_to 'Back', clients_path %>
+<%= link_to 'Back', root_path %>

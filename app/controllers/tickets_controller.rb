@@ -12,7 +12,8 @@ class TicketsController < ApplicationController
 
   # GET /tickets/new
   def new
-    @ticket = Ticket.new
+    @client = Client.find_by(id: params[:client_id])
+    @ticket = @client.tickets.new
   end
 
   # GET /tickets/1/edit
@@ -21,16 +22,15 @@ class TicketsController < ApplicationController
 
   # POST /tickets or /tickets.json
   def create
-    @ticket = Ticket.new(ticket_params)
+    @client = Client.find_by(id: params[:ticket][:client_id] || params[:ticket][:parameters][:client_id])
+    @ticket = @client.tickets.build(ticket_params)
 
-    respond_to do |format|
-      if @ticket.save
-        format.html { redirect_to @ticket, notice: "Ticket was successfully created." }
-        format.json { render :show, status: :created, location: @ticket }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @ticket.errors, status: :unprocessable_entity }
-      end
+    if @ticket.save
+      flash[:success] = "Se ha creado exitosamente el ticket de #{ @client.name }"  
+      redirect_to root_path
+    else
+      flash[:danger] = @ticket.errors[:base]
+      redirect_to service_path(@client)
     end
   end
 
@@ -64,6 +64,6 @@ class TicketsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ticket_params
-      params.require(:ticket).permit(:order_number, :order_date, :client_id, :equipment_descrip, :equipment_password, :equipment_state, :observations, :diagnostic, :cost)
+      params.require(:ticket).permit(:order_number, :order_date, :client_id, :equipment_descrip, :clave_equipment, :equipment_state, :observations, :diagnostic, :cost)
     end
 end

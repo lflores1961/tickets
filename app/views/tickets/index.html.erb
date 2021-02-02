@@ -25,10 +25,11 @@
         <td><%= ticket.order_date %></td>
         <td><%= ticket.client_id %></td>
         <td><%= ticket.equipment_descrip %></td>
-        <td><%= ticket.equipment_password %></td>
+        <td><%= ticket.clave_equipment %></td>
         <td><%= ticket.equipment_state %></td>
         <td><%= ticket.observations %></td>
         <td><%= ticket.diagnostic %></td>
+        <td><%= ticket.status %></td>
         <td><%= ticket.cost %></td>
         <td><%= link_to 'Show', ticket %></td>
         <td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
@@ -39,5 +40,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New Ticket', new_ticket_path %>

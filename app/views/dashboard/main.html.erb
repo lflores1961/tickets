@@ -1,0 +1,62 @@
+<h1>Panel de Control</h1>
+<div class="client-index">
+  <div class="row">
+    <div class="col-md-6">
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Tickets</th>
+            <th colspan="5">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @clients.each do |client| %>
+            <tr>
+              <td><%= client.name %></td>
+              <td><%= client.phone %></td>
+              <td><%= client.email %></td>
+              <td style="text-align:center;"><%= client.tickets.open.count %></td>
+              <td>
+                <%= link_to client do %>
+                  <%= image_tag "eye_open.png", :size => '20x20' %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to edit_client_path(client) do %>
+                  <%= image_tag "edit.png", :size => '20x20' %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to client, method: :delete, data: { confirm: '¿Está seguro?' } do %>
+                  <%= image_tag "trash_can.png", :size => '20x20' %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to service_path(client) do %>
+                  <%= image_tag "screwdriverAdd.png", :size => '20x20' %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to ver_tickets_path(client) do %>
+                  <%= image_tag "screwdriverView.png", :size => '20x20' %>
+                <% end %>
+              </td>
+            </tr>  
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-6">
+      <%= link_to new_client_path do %>
+        <%= image_tag "add.png", :size => '40x40' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="client-tickets">
+  
+</div>
+
