@@ -1,27 +1,30 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+ATENCIÓN: Solo debe haber un registro de este modelo, el número se incrementa cuando se crea un nuevo ticket
+ Por el momento solo sirve para llevar una numeración, no es un índice de búsqueda. 
+</p>
 <h1>Folios</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Numero folio</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @folios.each do |folio| %>
+<div class="client-index">
+  <table>
+    <thead>
       <tr>
-        <td><%= folio.numero_folio %></td>
-        <td><%= link_to 'Show', folio %></td>
-        <td><%= link_to 'Edit', edit_folio_path(folio) %></td>
-        <td><%= link_to 'Destroy', folio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Numero folio</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @folios.each do |folio| %>
+        <tr>
+          <td><%= folio.numero_folio %></td>
 
-<%= link_to 'New Folio', new_folio_path %>
+          <td><%= link_to 'Edit', edit_folio_path(folio) %></td>
+
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+

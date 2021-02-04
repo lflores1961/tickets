@@ -1,49 +1,45 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Order number:</strong>
-  <%= @ticket.order_number %>
-</p>
-
-<p>
-  <strong>Order date:</strong>
-  <%= @ticket.order_date %>
-</p>
-
-<p>
-  <strong>Client:</strong>
-  <%= @ticket.client_id %>
-</p>
-
-<p>
-  <strong>Equipment descrip:</strong>
-  <%= @ticket.equipment_descrip %>
-</p>
-
-<p>
-  <strong>Equipment password:</strong>
-  <%= @ticket.clave_equipment%>
-</p>
-
-<p>
-  <strong>Equipment state:</strong>
-  <%= @ticket.equipment_state %>
-</p>
-
-<p>
-  <strong>Observations:</strong>
-  <%= @ticket.observations %>
-</p>
-
-<p>
-  <strong>Diagnostic:</strong>
-  <%= @ticket.diagnostic %>
-</p>
-
-<p>
-  <strong>Cost:</strong>
-  <%= @ticket.cost %>
-</p>
+<h1>Ticket del cliente <%= @ticket.client.name %></h1>
+<div class="client-show">
+  <table>
+  <tr>
+    <td>No. Orden:</td>
+    <td><strong><%= @ticket.order_number %></strong></td>
+  </tr>
+  <tr>
+    <td>Fecha de Orden:</td>
+    <td><strong><%= @ticket.order_date %></strong></td>
+  </tr>
+  <tr>
+    <td>Fecha de Orden:</td>
+    <td><strong><%= @ticket.order_date %></strong></td>
+  </tr>
+  <tr>
+    <td>Descripción del equipo:</td>
+    <td><strong><%= @ticket.equipment_descrip %></strong></td>
+  </tr>
+  <tr>
+    <td>Password del equipo:</td>
+    <td><strong><%= @ticket.clave_equipment %></strong></td>
+  </tr>
+  <tr>
+    <td>Estado físico del equipo:</td>
+    <td><strong><%= @ticket.equipment_state %></strong></td>
+  </tr>
+  <tr>
+    <td>Observaciones:</td>
+    <td><strong><%= @ticket.observations %></strong></td>
+  </tr>
+  <tr>
+    <td>Diagnóstico:</td>
+    <td><strong><%= @ticket.diagnostic %></strong></td>
+  </tr>
+  <tr>
+    <td>Costo:</td>
+    <td><strong><%= @ticket.cost %></strong></td>
+  </tr>
+</table>
+</div>
 
 <%= link_to 'Edit', edit_ticket_path(@ticket) %> |
 <%= link_to 'Back', client_path(@ticket.client) %>

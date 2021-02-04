@@ -11,52 +11,44 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :order_number %>
-    <%= form.number_field :order_number %>
-  </div>
-
-  <div class="field">
-    <%= form.label :order_date %>
-    <%= form.date_select :order_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :client_id %>
-    <%= form.text_field :client_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :equipment_descrip %>
-    <%= form.text_area :equipment_descrip %>
-  </div>
-
-  <div class="field">
-    <%= form.label :lave_equipment %>
-    <%= form.text_field :clave_equipment %>
-  </div>
-
-  <div class="field">
-    <%= form.label :equipment_state %>
-    <%= form.text_area :equipment_state %>
-  </div>
-
-  <div class="field">
-    <%= form.label :observations %>
-    <%= form.text_area :observations %>
-  </div>
-
-  <div class="field">
-    <%= form.label :diagnostic %>
-    <%= form.text_area :diagnostic %>
-  </div>
-
-  <div class="field">
-    <%= form.label :cost %>
-    <%= form.number_field :cost %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <table class="tabla-captura">
+    <tr>
+      <td>Número de Orden:</td>
+      <td><%= form.number_field :order_number %></td>
+    </tr>
+    <tr>
+      <td>Fechade Orden:</td>
+      <td><%= form.date_select :order_date %></td>
+    </tr>
+    <tr>
+      <td>Descripción del equipo:</td>
+      <td><%= form.text_area :equipment_descrip, size: "62x5" %></td>
+    </tr>
+        <tr>
+      <td>Password del equipo:</td>
+      <td><%= form.text_field :clave_equipment %></td>
+    </tr>
+    <tr>
+      <td>Estado del equipo:</td>
+      <td><%= form.text_area :equipment_state, size: "62x5" %></td>
+    </tr>
+    <tr>
+      <td>Observaciones:</td>
+      <td><%= form.text_area :observations, size: "62x5"  %></td>
+    </tr>
+    <tr>
+      <td>Diagnóstico:</td>
+      <td><%= form.text_area :diagnostic, size: "62x5"  %></td>
+    </tr>
+    <tr>
+      <td>Costo:</td>
+      <td><%= form.number_field :cost  %></td>
+    </tr>
+    <tr>
+      <td colspan="2" style="text-align:center;">
+        <%= form.submit "Guardar Ticket" %>
+      </td>
+    </tr>
+  </table>
+  <%= form.hidden_field :client_id, :value => params[:client_id] %>
 <% end %>

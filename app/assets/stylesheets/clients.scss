@@ -1,3 +1,61 @@
 // Place all the styles related to the Clients controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.client-show{
+  background: #394d45;
+  color: azure;
+  border: azure 2px;
+  border-radius: 5px;
+  padding: 5px;
+  .col-md-6 {
+    margin-left: 20px;
+    padding-top: 1px;
+    padding-left: 30px;
+    width: auto;
+    min-height: 100px;
+    display: inline-table;
+    text-align: left;
+  }
+}
+
+.client-show-tickets {
+  background: #394d45;
+  color: azure;
+  border: azure 2px;
+  border-radius: 5px;
+  padding: 5px;
+  table {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px;
+    td {
+      a { 
+        img {
+          padding-top: 6px;
+          padding-bottom: -2px;
+        }
+      }
+    }
+    th {
+      color: #549279;
+    }
+    tr:nth-child(odd) {
+      background-color:#143025;
+    }
+    tr:nth-child(even) {
+      background-color:#2d302f;
+    }
+  }
+}
+
+.tabla-captura {
+  background: #394d45;
+  color: azure;
+  border: azure 2px;
+  border-radius: 5px;
+  padding: 25px;
+}
+
+.centrado {
+
+}

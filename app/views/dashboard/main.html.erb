@@ -1,4 +1,19 @@
 <h1>Panel de Control</h1>
+<div class="control-panel">
+  <table>
+    <tr>
+      <td class="etiqueta">Total de tickets:</td>
+      <td class="valor"><%= @total_tickets %></td>
+      <td class="etiqueta">Tickets abiertos:</td>
+      <td class="valor"><%= @tickets_abiertos %></td>
+      <td class="etiqueta">Tickets cerrados:</td>
+      <td class="valor"><%= @tickets_cerrados %></td>
+      <td class="etiqueta">% tickets abiertos:</td>
+      <td class="valor"><%= (@tickets_abiertos / @total_tickets) * 100 %>%</td>
+    </tr>
+  </table>
+</div>
+<h1>Clientes</h1>
 <div class="client-index">
   <div class="row">
     <div class="col-md-6">
@@ -6,10 +21,10 @@
         <thead>
           <tr>
             <th>Nombre</th>
-            <th>Phone</th>
+            <th>Teléfono</th>
             <th>Email</th>
             <th>Tickets</th>
-            <th colspan="5">Acciones</th>
+            <th colspan="4">Acciones</th>
           </tr>
         </thead>
         <tbody>
@@ -39,20 +54,21 @@
                   <%= image_tag "screwdriverAdd.png", :size => '20x20' %>
                 <% end %>
               </td>
-              <td>
-                <%= link_to ver_tickets_path(client) do %>
-                  <%= image_tag "screwdriverView.png", :size => '20x20' %>
-                <% end %>
-              </td>
+
             </tr>  
           <% end %>
         </tbody>
       </table>
     </div>
     <div class="col-md-6">
-      <%= link_to new_client_path do %>
-        <%= image_tag "add.png", :size => '40x40' %>
-      <% end %>
+      <span>
+        <%= link_to new_client_path do %>
+          <%= image_tag "add.png", :size => '40x40' %>
+        <% end %>
+      </span>
+      <span>
+        <%= link_to "Agregar Cliente", new_client_path %>
+      </span>
     </div>
   </div>
 </div>

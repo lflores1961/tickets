@@ -1,69 +1,80 @@
-<p id="notice"><%= notice %></p>
+<h1>Cliente</h1>
+<div class="client-show">
+  <p id="notice"><%= notice %></p>
+  <div class="col-md-6">
+    
+    <table>
+      <tr>
+        <td>Nombre:</td>
+        <td><strong><%= @client.name %></strong></td>
+      </tr>
+      <tr>
+        <td>Dirección:</td>
+        <td><strong><%= @client.address %></strong></td>
+      </tr>
+      <tr>
+        <td>Teléfono:</td>
+        <td><strong><%= @client.phone %></strong></td>
+      </tr>
+      <tr>
+        <td>e-mail:</td>
+        <td><strong><%= @client.email %></strong></td>
+      </tr>
 
-<p>
-  <strong>Name:</strong>
-  <%= @client.name %>
-</p>
+    </table>
 
-<p>
-  <strong>Address:</strong>
-  <%= @client.address %>
-</p>
-
-<p>
-  <strong>Phone:</strong>
-  <%= @client.phone %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @client.email %>
-</p>
-
-<p>
-  <strong>Rfc:</strong>
-  <%= @client.rfc %>
-</p>
+  </div>
+</div>
 
 <h1>Tickets</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Order number</th>
-      <th>Order date</th>
-      <th>Client</th>
-      <th>Equipment descrip</th>
-      <th>Equipment password</th>
-      <th>Equipment state</th>
-      <th>Observations</th>
-      <th>Diagnostic</th>
-      <th>Status</th>
-      <th>Cost</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @client.tickets.each do |ticket| %>
+<div class="client-show-tickets">
+  <table>
+    <thead>
       <tr>
-        <td><%= ticket.order_number %></td>
-        <td><%= ticket.order_date %></td>
-        <td><%= ticket.client_id %></td>
-        <td><%= ticket.equipment_descrip %></td>
-        <td><%= ticket.clave_equipment %></td>
-        <td><%= ticket.equipment_state %></td>
-        <td><%= ticket.observations %></td>
-        <td><%= ticket.diagnostic %></td>
-        <td><%= ticket.status %></td>
-        <td><%= ticket.cost %></td>
-        <td><%= link_to 'Mostrar', ticket %></td>
-        <td><%= link_to 'Modificar', edit_ticket_path(ticket) %></td>
-        <td><%= link_to 'Eliminar', ticket, method: :delete, data: { confirm: 'Por favor confirme la eliminación del Ticket.' } %></td>
+        <th>No. Orden</th>
+        <th>Fecha</th>
+        <th>Descripción</th>
+        <th>Password</th>
+        <th>Estado</th>
+        <th>Observaciones</th>
+        <th>Diagnostico</th>
+        <th>Status</th>
+        <th>Costo</th>
+        <th colspan="3">Acciones</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
+    <tbody>
+      <% @client.tickets.each do |ticket| %>
+        <tr>
+          <td><%= ticket.order_number %></td>
+          <td><%= ticket.order_date %></td>
+          <td><%= ticket.equipment_descrip %></td>
+          <td><%= ticket.clave_equipment %></td>
+          <td><%= ticket.equipment_state %></td>
+          <td><%= ticket.observations %></td>
+          <td><%= ticket.diagnostic %></td>
+          <td><%= ticket.status %></td>
+          <td><%= ticket.cost %></td>
+          <td>
+            <%= link_to ticket do %>
+              <%= image_tag "eye_open.png", :size => '20x20' %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to edit_ticket_path(ticket) do %>
+              <%= image_tag "edit.png", :size => '20x20' %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to ticket, method: :delete, data: { confirm: 'Por favor confirme la eliminación del Ticket.' } do %>
+              <%= image_tag "trash_can.png", :size => '20x20' %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 <%= link_to 'Edit', edit_client_path(@client) %> |
 <%= link_to 'Back', root_path %>

@@ -1,0 +1,7 @@
+<footer>
+  <span>fernando.flores1961@gmail.com</span>
+  <%= ruta_tardis = params[:controller] == 'folios' ? root_path : folios_path %>
+  <%= link_to ruta_tardis do %>
+    <span class="tardis"><%= image_tag "TardisIcon.png", size: "30x33" %></span>
+  <% end %>
+</footer>

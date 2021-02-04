@@ -1,6 +1,9 @@
 class DashboardController < ApplicationController
   def main
     @clients = Client.all
+    @total_tickets = Ticket.count
+    @tickets_abiertos = Ticket.open.count
+    @tickets_cerrados = Ticket.closed.count
   end
 
   def tickets_view

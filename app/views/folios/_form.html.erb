@@ -11,12 +11,16 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :numero_folio %>
-    <%= form.number_field :numero_folio %>
-  </div>
+  <table class="tabla-captura">
+    <tr>
+      <td>Numero de Folio:</td>
+      <td><%= form.number_field :numero_folio %></td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <%= form.submit %>
+      </td>
+    </tr>
+  </table>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>
