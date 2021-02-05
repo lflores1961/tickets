@@ -9,7 +9,8 @@
       <td class="etiqueta">Tickets cerrados:</td>
       <td class="valor"><%= @tickets_cerrados %></td>
       <td class="etiqueta">% tickets abiertos:</td>
-      <td class="valor"><%= (@tickets_abiertos / @total_tickets) * 100 %>%</td>
+      <% puts "Porcentaje=== #{@porcentaje_abiertos}" %>
+      <td class="valor"><%= number_to_percentage(@porcentaje_abiertos, :precision => 2) %></td>
     </tr>
   </table>
 </div>

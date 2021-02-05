@@ -40,7 +40,7 @@
         <th>Diagnostico</th>
         <th>Status</th>
         <th>Costo</th>
-        <th colspan="3">Acciones</th>
+        <th colspan="4">Acciones</th>
       </tr>
     </thead>
 
@@ -69,6 +69,15 @@
           <td>
             <%= link_to ticket, method: :delete, data: { confirm: 'Por favor confirme la eliminación del Ticket.' } do %>
               <%= image_tag "trash_can.png", :size => '20x20' %>
+            <% end %>
+          </td>
+          <td>
+            <% if ticket.open?%>
+              <%= link_to close_path(ticket), data: { confirm: 'Por favor confirme la acción de cerrar el Ticket.' } do %>
+                <%= image_tag "check_box.png", :size => '20x20' %>
+              <% end %>
+            <% else %>
+              <%= image_tag "check_box_check.png", :size => '20x20' %>
             <% end %>
           </td>
         </tr>

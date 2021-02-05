@@ -1,5 +1,5 @@
 class TicketsController < ApplicationController
-  before_action :set_ticket, only: %i[ show edit update destroy ]
+  before_action :set_ticket, only: %i[ show edit update destroy close ]
 
   # GET /tickets or /tickets.json
   def index
@@ -47,6 +47,20 @@ class TicketsController < ApplicationController
     end
   end
 
+  def close
+    @ticket.closing_time = Time.now
+    @ticket.status = 'closed'
+    if @ticket.save!
+      flash[:success] = "se ha cerrado exitosamente el ticket."
+      redirect_to client_path(@ticket.client)
+    else
+      flash[:danger] = "No se ha podido cerrar el ticket. Verifique por favor."
+      redirect_to close_path(@ticket.client)
+    end
+
+  end
+  
+
   # DELETE /tickets/1 or /tickets/1.json
   def destroy
     @ticket.destroy
@@ -59,7 +73,8 @@ class TicketsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_ticket
-      @ticket = Ticket.find(params[:id])
+      id = params[:id] || params[:ticket_id]
+      @ticket = Ticket.find(id)
     end
 
     # Only allow a list of trusted parameters through.
