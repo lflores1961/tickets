@@ -97,3 +97,32 @@ footer {
     color: azure;
   }
 }
+
+.nav-bar {
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    // overflow: hidden;
+  }
+  
+  li {
+    float: right;
+    background-color: rgb(26, 48, 39);
+    border-radius: 5px;
+  }
+  
+  li a {
+    display: inline;
+    color: white;
+    text-align: center;
+    // padding: 14px 16px;
+    padding: 10px;
+    text-decoration: none;
+  }
+  
+  li a:hover {
+    padding: 10px;
+    background-color: rgb(53, 109, 84);
+  }
+}

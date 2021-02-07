@@ -14,6 +14,7 @@ class TicketsController < ApplicationController
   def new
     @client = Client.find_by(id: params[:client_id])
     @ticket = @client.tickets.new
+    @ticket.order_number = Folio.get_folio
   end
 
   # GET /tickets/1/edit
@@ -24,8 +25,10 @@ class TicketsController < ApplicationController
   def create
     @client = Client.find_by(id: params[:ticket][:client_id] || params[:ticket][:parameters][:client_id])
     @ticket = @client.tickets.build(ticket_params)
+    @ticket.order_number = Folio.get_folio
 
     if @ticket.save
+      Folio.next_folio
       flash[:success] = "Se ha creado exitosamente el ticket de #{ @client.name }"  
       redirect_to client_path(@client)
     else
@@ -64,10 +67,8 @@ class TicketsController < ApplicationController
   # DELETE /tickets/1 or /tickets/1.json
   def destroy
     @ticket.destroy
-    respond_to do |format|
-      format.html { redirect_to client_path(@ticket.client), notice: "Se eliminó exitosamente el ticket" }
-      format.json { head :no_content }
-    end
+      flash[:success] = "Se eliminó exitosamente el ticket"
+      redirect_to client_path(@ticket.client)
   end
 
   private

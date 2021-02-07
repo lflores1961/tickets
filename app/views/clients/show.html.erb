@@ -1,6 +1,7 @@
+
 <h1>Cliente</h1>
 <div class="client-show">
-  <p id="notice"><%= notice %></p>
+
   <div class="col-md-6">
     
     <table>
@@ -22,8 +23,17 @@
       </tr>
 
     </table>
-
   </div>
+  <div class="col-md-6">
+      <span style="margin:15px;">
+        <%= link_to edit_client_path(@client) do %>
+          <%= image_tag "edit.png", :size => '40x40' %>
+        <% end %>
+      </span>
+      <span>
+        <%= link_to "Editar Cliente", new_client_path %>
+      </span>
+    </div>
 </div>
 
 <h1>Tickets</h1>
@@ -85,5 +95,5 @@
     </tbody>
   </table>
 </div>
-<%= link_to 'Edit', edit_client_path(@client) %> |
-<%= link_to 'Back', root_path %>
+
+

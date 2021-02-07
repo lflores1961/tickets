@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 <h1>Ticket del cliente <%= @ticket.client.name %></h1>
 <div class="client-show">
   <table>
@@ -41,5 +41,3 @@
 </table>
 </div>
 
-<%= link_to 'Edit', edit_ticket_path(@ticket) %> |
-<%= link_to 'Back', client_path(@ticket.client) %>

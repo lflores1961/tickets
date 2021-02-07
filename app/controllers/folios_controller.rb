@@ -36,15 +36,13 @@ class FoliosController < ApplicationController
 
   # PATCH/PUT /folios/1 or /folios/1.json
   def update
-    respond_to do |format|
       if @folio.update(folio_params)
-        format.html { redirect_to @folio, notice: "Folio was successfully updated." }
-        format.json { render :show, status: :ok, location: @folio }
+        flash[:success] = "Se ha actualizado exitosamente el Foliador."
+        redirect_to @folio
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @folio.errors, status: :unprocessable_entity }
+        flash[:danger] = "No se ha podido actualizar el Foliador."
+        render :edit
       end
-    end
   end
 
   # DELETE /folios/1 or /folios/1.json

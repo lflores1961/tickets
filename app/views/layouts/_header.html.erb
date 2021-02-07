@@ -1,4 +1,11 @@
 <header>
-  <span>Soporte Técnico</span>
-  <span class="logotipo"><%= image_tag "favicon.ico"%>
+  <span>Soporte Técnico</span><span class="logotipo"><%= image_tag "favicon.ico"%></span>
 </header>
+<div class="nav-bar">
+    <ul>
+      <% if params[:controller] != "dashboard" %>
+        <li><%= link_to "Inicio",root_path %></li>
+        <li><%= link_to "Anterior",request.referer %></li>
+      <% end %>
+    </ul>
+  </div>
