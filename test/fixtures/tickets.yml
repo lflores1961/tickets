@@ -5,7 +5,7 @@ one:
   order_date: 2021-01-26
   client: one
   equipment_descrip: MyText
-  equipment_password: MyString
+  clave_equipment: MyString
   equipment_state: MyText
   observations: MyText
   diagnostic: MyText
@@ -16,7 +16,7 @@ two:
   order_date: 2021-01-26
   client: two
   equipment_descrip: MyText
-  equipment_password: MyString
+  clave_equipment: MyString
   equipment_state: MyText
   observations: MyText
   diagnostic: MyText

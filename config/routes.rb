@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :users
   resources :folios
   root 'dashboard#main'
   resources :tickets, except: :new
